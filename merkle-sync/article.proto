@@ -1,0 +1,30 @@
+syntax = "proto3";
+package main;
+
+service Synchronizer {
+}
+
+enum ArticleKind {
+    TOMATO = 0;
+    POTATO = 1;
+    DRUG = 2;
+}
+
+message Article {
+    string name = 1;
+    ArticleKind kind = 2;
+}
+
+message Category {
+    repeated Article articles = 1;
+    ArticleKind kind = 2;
+}
+
+message MerkleTree {
+    string Path = 1;
+    string Sum = 2;
+    int32 Hasher = 3;
+    MerkleTree Parent = 4;
+    map<string,MerkleTree> Tree = 5;
+    bool Leaf = 6;
+}
